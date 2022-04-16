@@ -1,0 +1,14 @@
+.btn {
+    margin: 1%;
+    margin-left: 1px;
+    border-radius: 120px;
+    /*cursor: none !important;*/
+    /*força a remoção do cursor nos botões -> cursor: none !important;*/
+}
+
+.btn-secondary,
+.btn-secondary:hover {
+    background: white;
+    color: #0b2757;
+    /*cursor: none !important;*/
+}
