@@ -1,12 +1,8 @@
 import React from "react";
 import "./EntradasDigitais.css";
 
-let entradas_8 = [1, 1, 1, 1, 1, 1, 1, 1];
-let entradas_64 = [
-  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-  0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
-];
+let entradas_8 = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,];
+
 class EntradasDigitais extends React.Component {
   constructor(props) {
     super(props);
@@ -21,25 +17,36 @@ class EntradasDigitais extends React.Component {
     return (
       <div>
         <h3>Entradas Digitais(CLP)</h3>
-        {this.construirBotoes(entradas_8)}
+        <div>{this.construirBotoes(entradas_8)}</div>
       </div>
     );
   }
 
-  construirBotoes(entradas) {
+  construirBotoes(entradas, numeroLinha = 0) {
     let botoes = [];
+    let oitoBotoes = [];
     for (var i = 0; i < entradas.length; i++) {
-      botoes.push(
+      let botao = (
         <button
+          id={"entrada" + i + 1}
           className={
             entradas[i] === 1 ? "btn btn-success" : "btn btn-seccondary"
           }
         >
-          {i}
+          {i + 1}
         </button>
       );
+      oitoBotoes.push(botao);
+      if (oitoBotoes.length % 8 === 0) {
+        botoes.push(this.envolverJSXNaDiv(oitoBotoes))
+        oitoBotoes = [];
+      }
     }
     return botoes;
+  }
+
+  envolverJSXNaDiv(html){
+    return <div>{html}</div>
   }
 }
 
